@@ -1,0 +1,19 @@
+[alias]
+    ci = commit
+    st = status
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+    ui = auto
+[core]
+    excludesfile = /Users/nkraft/.gitignore_global
+[push]
+    default = simple
+[user]
+    name = Nicholas A. Kraft
+    email = nicholas.a.kraft@us.abb.com
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

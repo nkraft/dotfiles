@@ -1,0 +1,60 @@
+# ~/.bash_alias
+
+alias gvim='gvim -p'
+
+alias dia='/Applications/Dia.app/Contents/Resources/bin/dia'
+alias showlibrary='chflags nohidden ~/Library'
+
+alias mv='/bin/mv -i'
+alias rm='/bin/rm -i'
+#alias rm='trash'
+
+if [ -x /bin/grep ]; then
+    GREP=/bin/grep
+    EGREP=/bin/egrep
+else
+    GREP=/usr/bin/grep
+    EGREP=/usr/bin/egrep
+fi
+
+alias grep="$GREP -IR"
+alias egrep="$EGREP -IR"
+
+if [ -z "$LS_OPTIONS" ]; then
+    export LS_OPTIONS='--color=always'
+fi
+
+alias l='/bin/ls $LS_OPTIONS'
+alias ls='/bin/ls $LS_OPTIONS'
+alias la='/bin/ls -a $LS_OPTIONS'
+alias ll='/bin/ls -l $LS_OPTIONS'
+alias lla='/bin/ls -al $LS_OPTIONS'
+alias llrt='/bin/ls -lrt $LS_OPTIONS'
+alias llR='/bin/ls -lR $LS_OPTIONS'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+alias b='cd -'
+
+alias c='clear'
+alias cl='clear && /bin/ls $LS_OPTIONS'
+
+alias m='make'
+alias mc='make clean'
+alias mvc='make very_clean'
+alias mcl='make clean && clear && /bin/ls $LS_OPTIONS'
+alias mcmi='make && make clean && make install'
+alias mi='make && make install'
+alias msvn='make -f Makefile.svn'
+alias mview='make view'
+
+alias a='ant'
+alias ac='ant clean'
+alias acl='ant clean && clear && /bin/ls $LS_OPTIONS'
+alias aca='ant clean && ant'
+
+alias s='source ~/.bashrc'
