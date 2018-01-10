@@ -2,13 +2,13 @@
 
 if [ "Linux" == "$UNAME" ]
 then
-    TEXBIN='/usr/share/texmf/bin'
-    TEXMF='/usr/share/texmf'
+    TEXMF='/usr/share/texlive/texmf-dist'
 elif [ "Darwin" == "$UNAME" ]
 then
     TEXBIN='/usr/texbin'
     TEXMF='/usr/local/texlive/2014/texmf-dist'
     TEXMF_LOCAL='/usr/local/texlive/texmf-local'
+    export PATH="$TEXBIN:$PATH"
 fi
 
 TEXINPUTS=".:./latex:$TEXMF/tex//:$TEXMF_LOCAL/tex//"
@@ -24,4 +24,3 @@ fi
 export TEXINPUTS BIBINPUTS BSTINPUTS
 
 export MANPATH="$TEXMF/man:$TEXMF_LOCAL/man:$MANPATH"
-export PATH="$TEXBIN:$PATH"
