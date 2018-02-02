@@ -5,8 +5,8 @@ then
     TEXMF='/usr/share/texlive/texmf-dist'
 elif [ "Darwin" == "$UNAME" ]
 then
-    TEXBIN='/usr/texbin'
-    TEXMF='/usr/local/texlive/2014/texmf-dist'
+    TEXBIN='/Library/TeX/texbin'
+    TEXMF='/usr/local/texlive/2016/texmf-dist'
     TEXMF_LOCAL='/usr/local/texlive/texmf-local'
     export PATH="$TEXBIN:$PATH"
 fi
