@@ -3,7 +3,8 @@
 # Add your customizations here.
 # This file is sourced after ~/.bashrc and ~/.bash_alias
 
-export PS1='\[\e]2;\w\a\e[1;35m\][\[\e[1;30m\]\t\[\e[1;35m\]] \[\e[30m\]\u\[\e[35m\]@\[\e[30m\]\h\[\e[35m\]:\[\e[30m\]\w\n\[\e[1;30m\]\[\e[1;35m\][\[\e[1;30m\]\#\[\e[1;35m\]]\[\e[0;30m\] '
+#export PS1='\[\e]2;\w\a\e[1;35m\][\[\e[1;30m\]\t\[\e[1;35m\]] \[\e[30m\]\u\[\e[35m\]@\[\e[30m\]\h\[\e[35m\]:\[\e[30m\]\w\n\[\e[1;30m\]\[\e[1;35m\][\[\e[1;30m\]\#\[\e[1;35m\]]\[\e[0;30m\] '
+export PS1='\[\e]2;\w\a\e[1;31m\][\[\e[1;30m\]\t\[\e[1;31m\]] \[\e[30m\]\u\[\e[31m\]@\[\e[30m\]\h\[\e[31m\]:\[\e[30m\]\w\n\[\e[1;30m\]\[\e[1;31m\][\[\e[1;30m\]\#\[\e[1;31m\]]\[\e[0;30m\] '
 
 export PATH="$HOME/bin:$PATH"
 

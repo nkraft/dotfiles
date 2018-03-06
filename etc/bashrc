@@ -87,7 +87,7 @@ MANPATH="$MANPATH:/usr/man:/usr/share/man"
 
 PAGER='less'
 
-PATH="$HOME/bin"
+PATH="$HOME/bin:$HOME/.local/bin"
 if [ "Linux" == "$UNAME" ]
 then
     PATH="$PATH:/opt/local/bin:/opt/bin"
