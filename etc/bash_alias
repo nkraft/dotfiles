@@ -17,8 +17,8 @@ else
     EGREP=/usr/bin/egrep
 fi
 
-alias grep="$GREP -IR --color=auto"
-alias egrep="$EGREP -IR --color=auto"
+alias grep="$GREP -I --color=auto"
+alias egrep="$EGREP -I --color=auto"
 
 if [ -z "$LS_OPTIONS" ]; then
     export LS_OPTIONS='--color=always'
