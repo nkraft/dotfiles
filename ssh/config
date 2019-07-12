@@ -1,21 +1,5 @@
-Host github
-    HostName github.com
-    User git
-    IdentityFile ~/.ssh/nkraft
-    IdentitiesOnly yes
-    PasswordAuthentication no
-
-Host gitbb
-    HostName bitbucket.org
-    User git
-    IdentityFile ~/.ssh/nkraft
-    IdentitiesOnly yes
-    PasswordAuthentication no
-
-Host hgbb
-    HostName bitbucket.org
-    User hg
-    Compression yes
-    IdentityFile ~/.ssh/nkraft
-    IdentitiesOnly yes
-    PasswordAuthentication no
+Host *
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_rsa
+  IgnoreUnknown UseKeychain
+  #UseKeychain yes

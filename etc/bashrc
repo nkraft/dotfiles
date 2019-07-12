@@ -6,166 +6,37 @@ case $- in
     *) return;;
 esac
 
-#-------------------------------------------------------------------------------
-# Platform
-#-------------------------------------------------------------------------------
-
-UNAME=`uname`
-
-#-------------------------------------------------------------------------------
-# Ls
-#-------------------------------------------------------------------------------
-
 unset LS_OPTIONS
-
-if [ "Linux" == "$UNAME" ]
-then
-    LS_OPTIONS='-F -b -T 0 --color=auto'
-elif [ "Darwin" == "$UNAME" ]
-then
-    LS_OPTIONS='-F -b -G'
-fi
-
+LS_OPTIONS='-F -b -G'
 export LS_OPTIONS
 
-#-------------------------------------------------------------------------------
-# Shell
-#-------------------------------------------------------------------------------
-
-CDPATH=".:$HOME/repos/steel.cs.ua.edu/users/nkraft"
-
-FIGNORE='CVS:\~:.o:.svn'
-
 HISTCONTROL='ignoredups:erasedups'
-
 IGNOREEOF=1
-
-PS1='[\t] \u@\h:\w [\#] '
-
-export CDPATH FIGNORE HISTCONTROL IGNOREEOF PS1
+export HISTCONTROL IGNOREEOF
 
 set -o emacs
 set -o histexpand
 set -o monitor
 set -o notify
-#set -o nounset # breaks bash completion on Ubuntu 17.10
 
 shopt -s checkwinsize
 shopt -s cmdhist
 shopt -s expand_aliases
 shopt -s histappend
 shopt -s no_empty_cmd_completion
-
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-
 shopt -u huponexit
 
 ulimit -c 0
 umask 0077
 
-#-------------------------------------------------------------------------------
-# System
-#-------------------------------------------------------------------------------
-
 EDITOR='/usr/bin/vi'
-
-#LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib"
-
-MANPATH="$HOME/man:$HOME/gcc/man:$HOME/software/man"
-MANPATH="$MANPATH:/opt/man"
-MANPATH="$MANPATH:/usr/local/man:/usr/local/share/man"
-MANPATH="$MANPATH:/usr/man:/usr/share/man"
-
-# make less more friendly
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 PAGER='less'
-
-PATH="$HOME/bin:$HOME/.local/bin"
-if [ "Linux" == "$UNAME" ]
-then
-    PATH="$PATH:/opt/local/bin:/opt/bin"
-    PATH="$PATH:/usr/local/bin:/usr/bin:/bin"
-elif [ "Darwin" == "$UNAME" ]
-then
-    #PATH="$PATH:/usr/local/bin:/usr/bin:/bin"
-    #PATH="$PATH:/opt/local/bin:/opt/bin"
-    PATH="$PATH:/usr/local/bin:/opt/local/bin:/opt/bin:/usr/bin:/bin"
-fi
-PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin"
-
-#export EDITOR LD_LIBRARY_PATH MANPATH PAGER PATH
-export EDITOR MANPATH PAGER PATH
-
-
-#-------------------------------------------------------------------------------
-# Mac
-#-------------------------------------------------------------------------------
+export EDITOR PAGER
 
 # turn off special handling of ._* files in tar, etc.
 # see http://superuser.com/questions/259703/get-mac-tar-to-stop-putting-filenames-in-tar-archives
 COPYFILE_DISABLE=1
 export COPYFILE_DISABLE
-
-#-------------------------------------------------------------------------------
-
-for profile_script in $HOME/.profile.d/*.sh
-do
-   if [ -x $profile_script ]; then
-      . $profile_script
-   fi
-done
-
-unset profile_script
-
-function abspath () {
-    case "$1" in
-        /*)
-            printf "%s\n" "$1"
-            ;;
-        *)
-            local path="$1"
-            local realpath=$(pwd)
-            local token=
-            for token in ${path//\// }; do
-                case $token in
-                    '' | '.')
-                        ;;
-                    '..')
-                        realpath=$(dirname $realpath)
-                        ;;
-                    *)
-                        realpath="$realpath/$token"
-                        ;;
-                esac
-            done
-            printf "%s" "$realpath"
-    esac
-}
-
-function realpath() {
-    printf "%s\n" $(abspath $1)
-}
-
-function trash {
-    for f in "$@"
-    do
-        local path=$(abspath $f)
-        if [ -e "$path" ]; then
-            (osascript -e "tell app \"Finder\" to move POSIX file \"$path\" to trash" > /dev/null 2>&1 &)
-        else
-            printf "File \"%s\" does not exist.\n" "$path"
-        fi
-    done
-}
-
-#-------------------------------------------------------------------------------
 
 source ~/.bash_alias
 source ~/.bash_local

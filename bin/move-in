@@ -4,23 +4,9 @@ LN='ln -s'
 
 this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 home=`dirname $this_dir`
-uname=`uname`
 
-DIRS='bin'
-if [ "Darwin" == "$uname" ]; then
-    DIRS="$DIRS Library/KeyBindings"
-fi
-
-for d in $DIRS
+for f in bash_alias bash_local bash_profile bashrc gitconfig gitignore_global
 do
-    $LN $home/$d $HOME/$d
-done
-
-for f in bash_alias bash_local bash_profile bashrc profile.d \
-         gitconfig gitignore_global \
-         hgrc hgignore_global \
-         inputrc
-do
-    $LN $home/etc/$f $HOME/.$f
+  echo $LN $home/etc/$f $HOME/.$f
 done
 

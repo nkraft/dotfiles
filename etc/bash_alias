@@ -2,27 +2,14 @@
 
 alias gvim='gvim -p'
 
-alias dia='/Applications/Dia.app/Contents/Resources/bin/dia'
-alias showlibrary='chflags nohidden ~/Library'
-
 alias mv='/bin/mv -i'
 alias rm='/bin/rm -i'
-#alias rm='trash'
 
-if [ -x /bin/grep ]; then
-    GREP=/bin/grep
-    EGREP=/bin/egrep
-else
-    GREP=/usr/bin/grep
-    EGREP=/usr/bin/egrep
-fi
+GREP=/usr/bin/grep
+EGREP=/usr/bin/egrep
 
 alias grep="$GREP -I --color=auto"
 alias egrep="$EGREP -I --color=auto"
-
-if [ -z "$LS_OPTIONS" ]; then
-    export LS_OPTIONS='--color=always'
-fi
 
 alias l='/bin/ls $LS_OPTIONS'
 alias ls='/bin/ls $LS_OPTIONS'
@@ -43,18 +30,4 @@ alias b='cd -'
 alias c='clear'
 alias cl='clear && /bin/ls $LS_OPTIONS'
 
-alias m='make'
-alias mc='make clean'
-alias mvc='make very_clean'
-alias mcl='make clean && clear && /bin/ls $LS_OPTIONS'
-alias mcmi='make && make clean && make install'
-alias mi='make && make install'
-alias msvn='make -f Makefile.svn'
-alias mview='make view'
-
-alias a='ant'
-alias ac='ant clean'
-alias acl='ant clean && clear && /bin/ls $LS_OPTIONS'
-alias aca='ant clean && ant'
-
-alias s='source ~/.bashrc'
+alias s='source ~/.bash_profile'
