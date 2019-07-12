@@ -7,6 +7,6 @@ home=`dirname $this_dir`
 
 for f in bash_alias bash_local bash_profile bashrc gitconfig gitignore_global
 do
-  echo $LN $home/etc/$f $HOME/.$f
+  $LN $home/etc/$f $HOME/.$f
 done
 
